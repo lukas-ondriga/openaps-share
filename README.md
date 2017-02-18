@@ -20,5 +20,10 @@ TODO: rewrite in more json friendly way e.g. Node.js, improve parameter handling
 ##### Android
 [Http Request Shortcuts](https://play.google.com/store/apps/details?id=ch.rmy.android.http_shortcuts) can be used to create various buttons for Http requests. 
 
+<img src="https://github.com/lukas-ondriga/openaps-share/blob/master/Screenshot_20170218-162143.png" alt="Http Shortcuts 1" width="250"/>
+<img src="https://github.com/lukas-ondriga/openaps-share/blob/master/Screenshot_20170218-162223.png" alt="Http Shortcuts 2" width="250"/>
+
 ##### Pebble
 [Http Push](https://apps.getpebble.com/en_US/application/567af43af66b129c7200002b) is pebble application where you can create custom http buttons. No registration anywhere is required and you do not need an internet connection to execute your requests.
+
+<img src="https://github.com/lukas-ondriga/openaps-share/blob/master/Screenshot_20170218-162111.png" alt="Pebble" width="250"/>
