@@ -15,7 +15,10 @@ TODO: rewrite in more json friendly way e.g. Node.js, improve parameter handling
 ##### Installation
 - clone this repository
 - install dependencies: ```sudo python pip install flask json```
-- to start the service: ```MYOPENAPSROOT=/path/to/yout/openaps APSapi.py```
+- to start the service: ```MYOPENAPSROOT=/path/to/youropenaps APSapi.py```
+- to run on startup add to the crontab: ``` MYOPENAPSROOT=/path/to/your/openaps /path/to/service/APSapi.py```
+
+The service uses by default port 5001.
 
 ##### Android
 [Http Request Shortcuts](https://play.google.com/store/apps/details?id=ch.rmy.android.http_shortcuts) can be used to create various buttons for Http requests. 
