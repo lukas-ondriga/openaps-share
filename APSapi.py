@@ -129,11 +129,11 @@ class SuggestBolus (Resource):
 	with open(BOLUSFILE, 'w') as outfile:
     	    json.dump(json_data, outfile)
 
-	json_data = [{}]
-	json_data[0]['carbs'] = carbs;
-	json_data[0]['created_at'] = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000Z");
+	json_data = {}
+	json_data['carbs'] = carbs;
+	json_data['created_at'] = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000Z");
 
-	CARBSFILE = OPENAPSROOT+ "/bolus/carbshistory.json"
+	CARBSFILE = OPENAPSROOT+ "/bolus/carbhistory.json"
 	with open(CARBSFILE, 'w') as outfile:
     	    json.dump(json_data, outfile)
 
@@ -158,10 +158,33 @@ class EnactBolus (Resource):
     	result = subprocess.call('cd $OPENAPSROOT; openaps use pump bolus bolus/bolus.json', shell=True)
     	subprocess.call('cd $OPENAPSROOT; rm bolus/bolus.json', shell=True)
 
+	CARBINPUT = OPENAPSROOT+ "/bolus/carbhistory.json"
+	with open(CARBINPUT) as carbfile:
+    	    carb_data = json.load(carbfile)
+
+	CARBHISTORYINPUT = OPENAPSROOT+ "/monitor/carbhistory.json"
+	with open(CARBHISTORYINPUT) as carbhistoryfile:
+    	    carb_history_data = json.load(carbhistoryfile)
+
+	carb_history_data.append(carb_data)
+	
+	carb_history_max_size = 10
+
+	if len(carb_history_data) > 10:
+	    remove_items_count = len(carb_history_data) - 10
+	    for i in range(0,remove_items_count-1):
+		print "Removing item " + str(i)
+	        carb_history_data.pop(i)
+
+	with open(CARBHISTORYINPUT, 'w') as carbhistoryfile:
+    	    json.dump(carb_history_data, carbhistoryfile)
+
+    	subprocess.call('cd $OPENAPSROOT; openaps offline-meal-carbs &', shell=True)
+
 	if result:
-            return 'Unable to bolus!', 404 
+             return 'Unable to bolus!', 404 
 	else:
-	    return '', 200
+             return '', 200
 
 api.add_resource(EnactBolus, '/api/v1/enactbolus')
 
