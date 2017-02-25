@@ -14,7 +14,7 @@ TODO: rewrite in more json friendly way e.g. Node.js, improve parameter handling
 #### Web service 
 ##### Installation
 - clone this repository
-- install dependencies: ```sudo python pip install flask json```
+- install dependencies: ```sudo pip install flask```
 - to start the service: ```OPENAPSROOT=/path/to/youropenaps APSapi.py```
 - to run on startup add to the crontab: ```@reboot OPENAPSROOT=/path/to/your/openaps /path/to/service/APSapi.py```
 
