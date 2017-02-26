@@ -15,8 +15,8 @@ TODO: rewrite in more json friendly way e.g. Node.js, improve parameter handling
 ##### Installation
 - clone this repository
 - install dependencies: ```sudo pip install flask```
-- to start the service: ```OPENAPSROOT=/path/to/youropenaps APSapi.py```
-- to run on startup add to the crontab: ```@reboot OPENAPSROOT=/path/to/your/openaps /path/to/service/APSapi.py```
+- to start the service: ```OPENAPSROOT=/path/to/youropenapsp python APSapi.py```
+- to run on startup add to the crontab: ```@reboot OPENAPSROOT=/path/to/your/openaps python /path/to/service/APSapi.py```
 
 The service uses by default port 5001.
 
